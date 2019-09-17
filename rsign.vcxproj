@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1673dda2-4fcd-4459-b819-db050d415264}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>rsign</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2B}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ProjectPublicIncludePath>.;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+    <MultiProcNumber>1</MultiProcNumber>
+    <ValidateArchitecture>false</ValidateArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ProjectPublicIncludePath>.;$(ProjectPublicIncludePath)</ProjectPublicIncludePath>
+    <MultiProcNumber>8</MultiProcNumber>
+    <ValidateArchitecture>false</ValidateArchitecture>
+    <OutDir>/root/</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="ldid\ldid.cpp" />
+    <ClCompile Include="ldid\lookup2.c" />
+    <ClCompile Include="libplist\Array.cpp" />
+    <ClCompile Include="libplist\base64.c" />
+    <ClCompile Include="libplist\Boolean.cpp" />
+    <ClCompile Include="libplist\bplist.c" />
+    <ClCompile Include="libplist\bytearray.c" />
+    <ClCompile Include="libplist\Data.cpp" />
+    <ClCompile Include="libplist\Date.cpp" />
+    <ClCompile Include="libplist\Dictionary.cpp" />
+    <ClCompile Include="libplist\hashtable.c" />
+    <ClCompile Include="libplist\Integer.cpp" />
+    <ClCompile Include="libplist\Key.cpp" />
+    <ClCompile Include="libplist\libcnary\iterator.c" />
+    <ClCompile Include="libplist\libcnary\list.c" />
+    <ClCompile Include="libplist\libcnary\node.c" />
+    <ClCompile Include="libplist\libcnary\node_iterator.c" />
+    <ClCompile Include="libplist\libcnary\node_list.c" />
+    <ClCompile Include="libplist\Node.cpp" />
+    <ClCompile Include="libplist\plist.c" />
+    <ClCompile Include="libplist\ptrarray.c" />
+    <ClCompile Include="libplist\Real.cpp" />
+    <ClCompile Include="libplist\String.cpp" />
+    <ClCompile Include="libplist\Structure.cpp" />
+    <ClCompile Include="libplist\time64.c" />
+    <ClCompile Include="libplist\Uid.cpp" />
+    <ClCompile Include="libplist\xplist.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="sign\EEBackend.cpp" />
+    <ClCompile Include="sign\EESigning.cpp" />
+    <ClCompile Include="zip\miniz.c" />
+    <ClCompile Include="zip\miniz_zipfile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cmdline.h" />
+    <ClInclude Include="ldid\ldid.hpp" />
+    <ClInclude Include="ldid\sha1.h" />
+    <ClInclude Include="libplist\Array.h" />
+    <ClInclude Include="libplist\base64.h" />
+    <ClInclude Include="libplist\Boolean.h" />
+    <ClInclude Include="libplist\bytearray.h" />
+    <ClInclude Include="libplist\Data.h" />
+    <ClInclude Include="libplist\Date.h" />
+    <ClInclude Include="libplist\Dictionary.h" />
+    <ClInclude Include="libplist\hashtable.h" />
+    <ClInclude Include="libplist\Integer.h" />
+    <ClInclude Include="libplist\Key.h" />
+    <ClInclude Include="libplist\libcnary\iterator.h" />
+    <ClInclude Include="libplist\libcnary\list.h" />
+    <ClInclude Include="libplist\libcnary\node.h" />
+    <ClInclude Include="libplist\libcnary\node_iterator.h" />
+    <ClInclude Include="libplist\libcnary\node_list.h" />
+    <ClInclude Include="libplist\libcnary\object.h" />
+    <ClInclude Include="libplist\Node.h" />
+    <ClInclude Include="libplist\plist++.h" />
+    <ClInclude Include="libplist\plist.h" />
+    <ClInclude Include="libplist\plist2.h" />
+    <ClInclude Include="libplist\ptrarray.h" />
+    <ClInclude Include="libplist\Real.h" />
+    <ClInclude Include="libplist\strbuf.h" />
+    <ClInclude Include="libplist\String.h" />
+    <ClInclude Include="libplist\Structure.h" />
+    <ClInclude Include="libplist\time64.h" />
+    <ClInclude Include="libplist\time64_limits.h" />
+    <ClInclude Include="libplist\Uid.h" />
+    <ClInclude Include="sign\ca.h" />
+    <ClInclude Include="sign\EEBackend.h" />
+    <ClInclude Include="sign\EESigning.h" />
+    <ClInclude Include="zip\miniz.h" />
+    <ClInclude Include="zip\miniz_zipfile.h" />
+    <ClInclude Include="zip\tinydir.h" />
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>-Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu99</CLanguageStandard>
+      <CppLanguageStandard>c++11</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>crypto;ssl</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>-Wno-sign-conversion -Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <CLanguageStandard>gnu99</CLanguageStandard>
+      <CppLanguageStandard>c++11</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>crypto;ssl</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,6 +1,6 @@
 # rsign
 
-This project utilizes the relevant codes of code signning part of [ReProvsion](https://github.com/Matchstic/ReProvision).
+This project utilizes the relevant codes of code signning part of [ReProvision](https://github.com/Matchstic/ReProvision).
 
 In my work, I need a IPA resign tool on Linux. I searched on internet but found nothing. It seems that ldid, isign, jtool can only work on iOS11 and below.
 
@@ -20,7 +20,7 @@ options:
 ### Notes
 I use MSBuild-based Linux projects of Visual Studio 2017.
 
-Third-party libraries which not included in [ReProvsion](https://github.com/Matchstic/ReProvision): [miniz](https://github.com/richgel999/miniz), [tinydir](https://github.com/cxong/tinydir), [cmdline](https://github.com/tanakh/cmdline)
+Third-party libraries which not included in [ReProvision](https://github.com/Matchstic/ReProvision): [miniz](https://github.com/richgel999/miniz), [tinydir](https://github.com/cxong/tinydir), [cmdline](https://github.com/tanakh/cmdline)
 ### License
 
 Licensed under the AGPLv3 License.

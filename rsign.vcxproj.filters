@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="libplist\Array.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\base64.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Boolean.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\bplist.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\bytearray.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Data.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Date.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Dictionary.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\hashtable.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Integer.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Key.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Node.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\plist.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\ptrarray.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Real.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\String.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Structure.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\time64.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\Uid.cpp">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\xplist.c">
+      <Filter>libplist</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\libcnary\iterator.c">
+      <Filter>libplist\libcnary</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\libcnary\list.c">
+      <Filter>libplist\libcnary</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\libcnary\node.c">
+      <Filter>libplist\libcnary</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\libcnary\node_iterator.c">
+      <Filter>libplist\libcnary</Filter>
+    </ClCompile>
+    <ClCompile Include="libplist\libcnary\node_list.c">
+      <Filter>libplist\libcnary</Filter>
+    </ClCompile>
+    <ClCompile Include="ldid\ldid.cpp">
+      <Filter>ldid</Filter>
+    </ClCompile>
+    <ClCompile Include="ldid\lookup2.c">
+      <Filter>ldid</Filter>
+    </ClCompile>
+    <ClCompile Include="zip\miniz.c">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="zip\miniz_zipfile.cpp">
+      <Filter>zip</Filter>
+    </ClCompile>
+    <ClCompile Include="sign\EEBackend.cpp">
+      <Filter>sign</Filter>
+    </ClCompile>
+    <ClCompile Include="sign\EESigning.cpp">
+      <Filter>sign</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cmdline.h" />
+    <ClInclude Include="libplist\Array.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\base64.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Boolean.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\bytearray.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Data.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Date.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Dictionary.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\hashtable.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Integer.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Key.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Node.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\plist.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\plist++.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\plist2.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\ptrarray.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Real.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\strbuf.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\String.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Structure.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\time64.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\time64_limits.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\Uid.h">
+      <Filter>libplist</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\iterator.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\list.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\node.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\node_iterator.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\node_list.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="libplist\libcnary\object.h">
+      <Filter>libplist\libcnary</Filter>
+    </ClInclude>
+    <ClInclude Include="ldid\ldid.hpp">
+      <Filter>ldid</Filter>
+    </ClInclude>
+    <ClInclude Include="ldid\sha1.h">
+      <Filter>ldid</Filter>
+    </ClInclude>
+    <ClInclude Include="zip\miniz.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zip\miniz_zipfile.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="zip\tinydir.h">
+      <Filter>zip</Filter>
+    </ClInclude>
+    <ClInclude Include="sign\EEBackend.h">
+      <Filter>sign</Filter>
+    </ClInclude>
+    <ClInclude Include="sign\EESigning.h">
+      <Filter>sign</Filter>
+    </ClInclude>
+    <ClInclude Include="sign\ca.h">
+      <Filter>sign</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="libplist">
+      <UniqueIdentifier>{36840eeb-6fad-45b5-9dc5-5a45efd88a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libplist\libcnary">
+      <UniqueIdentifier>{5294dee9-e616-4eb8-8fb4-cffe45333d28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ldid">
+      <UniqueIdentifier>{e6f5329e-808d-4e63-94fd-ab523c57bd18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="zip">
+      <UniqueIdentifier>{7c0fe4d0-19f2-4724-9c5b-86555b211c30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sign">
+      <UniqueIdentifier>{bfd6c2a7-a421-4be5-b3a9-39a9c0a4eadd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

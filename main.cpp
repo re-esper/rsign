@@ -3,6 +3,7 @@
 
 #include "sign/EEBackend.h"
 #include "sign/EESigning.h"
+
 #include <fstream>
 #include <sstream>
 #include "zip/tinydir.h"
@@ -24,25 +25,6 @@ std::string readFile(const std::string& path)
 	return ostrm.str();
 }
 
-std::vector<std::string> findDirectoriesWithExt(const std::string& path, const char* ext)
-{
-    std::vector<std::string> result;
-    tinydir_dir dir;
-    tinydir_open(&dir, path.c_str());
-    while (dir.has_next) {
-        tinydir_file file;
-        tinydir_readfile(&dir, &file);
-        if (file.is_dir) {
-            if (strstr(file.name, ext)) {
-                result.push_back(file.name);
-            }
-        }
-        tinydir_next(&dir);
-    }
-    tinydir_close(&dir);
-    return result;
-}
-
 int main(int argc, char *args[])
 {
 	cmdline::parser options;
@@ -59,33 +41,41 @@ int main(int argc, char *args[])
 	bool succ = unpackIpaAtPath(resignIPA, &outDir);
 	if (!succ) return 1;
 	
-    std::string payloadDirectory = outDir + "/Payload";
-    auto dotAppDirectories = findDirectoriesWithExt(payloadDirectory, ".app");
-	if (dotAppDirectories.empty()) {
+	std::string payloadDirectory = outDir + "/Payload";
+	std::string dotAppDirectory;
+	tinydir_dir dir;
+	tinydir_open(&dir, payloadDirectory.c_str());
+	while (dir.has_next) {
+		tinydir_file file;
+		tinydir_readfile(&dir, &file);
+		if (file.is_dir) {
+			if (strstr(file.name, ".app")) {
+			 	dotAppDirectory = file.name;
+				break;
+			}
+		}
+		tinydir_next(&dir);
+	}
+	tinydir_close(&dir);
+	if (dotAppDirectory.empty()) {
 		fprintf(stderr, "Can not found .app folder in IPA\n");
 		return 1;
-	}	
-    std::vector<std::string> bundlePaths;
-    std::string mainBundlePath = payloadDirectory + "/" + dotAppDirectories.front();
-    bundlePaths.push_back(mainBundlePath);
-    auto appexDirectories = findDirectoriesWithExt(mainBundlePath + "/PlugIns", ".appex");
-    for (auto& dir : appexDirectories) {
-        bundlePaths.push_back(mainBundlePath + "/PlugIns/" + dir);
-    }
-    appexDirectories = findDirectoriesWithExt(mainBundlePath + "/Watch", ".appex");
-    for (auto& dir : appexDirectories) {
-        bundlePaths.push_back(mainBundlePath + "/PlugIns/" + dir);
-    }
-
-    // step 2, initialize signer
-    std::string certifcate = readFile(options.get<std::string>("cert"));
-    std::string pkey = readFile(options.get<std::string>("key"));
-    EESigning signer(certifcate, pkey);
-
-	// step 3, processing provision
+	}
+	std::string bundleDirectory = payloadDirectory + "/" + dotAppDirectory;
+       
+	// step 2, replace provision profile
 	printf("Processing provision profile and entitlements\n");
 	std::string profile = options.get<std::string>("profile");
-	std::string data = readFile(profile);
+	std::string embeddedPath = bundleDirectory + "/embedded.mobileprovision";
+	copyFile(profile, embeddedPath);
+
+	// step 3, initialize signer	
+	std::string certifcate = readFile(options.get<std::string>("cert"));
+	std::string pkey = readFile(options.get<std::string>("key"));
+	EESigning signer(certifcate, pkey);
+        
+	// step 4, update entitlements in binary
+	std::string data = readFile(profile);        
 	const char* bytes = data.data();
 	unsigned long len = data.size();
 	const char* stag = "<key>Entitlements</key>";
@@ -96,7 +86,7 @@ int main(int argc, char *args[])
 		return 1;
 	}
 	const char* etag = "</dict>";
-	unsigned long elen = strlen(etag);
+	unsigned long elen = strlen(etag);	
 	const char* pend = (const char*)memmem(pstart, len - (pstart - bytes), etag, elen);
 	if (NULL == pend) {
 		fprintf(stderr, "Error in parsing mobileprovision\n");
@@ -109,18 +99,14 @@ int main(int argc, char *args[])
 	entitlements.append(pstart + slen, pend - (pstart + slen) + elen);
 	entitlements.append("\n</plist>");
 	
-	// step 4, signing!    
-    for (auto& path : bundlePaths) {
-        printf("signing %s...\n", path.substr(path.find_last_of("/") + 1).c_str());
-        std::string embeddedPath = path + "/embedded.mobileprovision";
-        copyFile(profile, embeddedPath);
-        if (!signer.signBundleAtPath(path, entitlements)) {
-            fprintf(stderr, "Failed to perform signing\n");
-            return 1;
-        }
-    }
+	// step 5, signing!
+	printf("signing...\n");
+	if (!signer.signBundleAtPath(bundleDirectory, entitlements)) {
+		fprintf(stderr, "Failed to perform signing\n");
+		return 1;
+	}
 
-	// step 5, repack
+	// step 6, repack	
 	size_t found = resignIPA.find_last_of("/\\");
 	std::string zipFilename = found != std::string::npos ? resignIPA.substr(found + 1) : resignIPA;
 	found = zipFilename.find(".ipa");
@@ -131,7 +117,6 @@ int main(int argc, char *args[])
 		return 1;
 	}
 
-    system(("rm -r " + applicationTemporaryDirectory()).c_str());
 	printf("done!\n");
     return 0;
 }
